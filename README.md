@@ -2,7 +2,8 @@
 
 This block covers Document Object Model (DOM).
 
-## Demonstrates use of: .querySelector, .appendChild, .replaceChildren, Math.floor, Math.random, .toFixed(), .length, objects, arrays, for/of loop, .map, .reduce, .push, .setAttribute, setInterval, .createElement, .innerText, .innerHTML, Object.keys().
+## Demonstrates use of: 
+.querySelector, .appendChild, .replaceChildren, Math.floor, Math.random, .toFixed(), .length, objects, arrays, for/of loop, .map, .reduce, .push, .setAttribute, setInterval, .createElement, .innerText, .innerHTML, Object.keys().
 
 ## Challenges:
 
