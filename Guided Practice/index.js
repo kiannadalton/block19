@@ -4,7 +4,7 @@
 // This is also where we define functions to modify the state.
 
 // TODO: Add support for more colors
-const colors = ["red", "green", "blue"];
+const colors = ["red", "orange", "yellow", "green", "blue", "purple"];
 const sizes = ["small", "medium", "large"];
 const maxShapes = 10;
 const shapes = [
@@ -20,12 +20,16 @@ const shapes = [
 
 /** Adds a shape with random properties to the `shapes` array */
 function addShape() {
-  const color = colors[Math.floor(Math.random() * colors.length)];
+  if (shapes.length < 10) {
+    const color = colors[Math.floor(Math.random() * colors.length)];
 
-  // TODO: Randomize the size of the shape
-  const size = "small";
+    // TODO: Randomize the size of the shape
+    const size = sizes[Math.floor(Math.random() * sizes.length)];
 
-  shapes.push({ color, size });
+    shapes.push({ color, size });
+  } else {
+    clearInterval(addShapeIntervalId);
+  }
 }
 
 // === Render ===
@@ -44,6 +48,16 @@ function render() {
   squareList.replaceChildren(...squareElements);
 
   // TODO: Render the circles
+  const circleList = document.querySelector("#circles");
+  // creates element for each index of the shapes array
+  const circleElements = shapes.map((shape) => {
+    const circleElement = document.createElement("li");
+    // adds classes for color and size in the array to li element
+    circleElement.classList.add(shape.color, shape.size);
+    return circleElement;
+  });
+  // adds mapped array to the circleList variable. Using.replaceChildren allows no repeats in generating random circles
+  circleList.replaceChildren(...circleElements);
 }
 
 // === Script ===
@@ -57,6 +71,7 @@ const addShapeIntervalId = setInterval(() => {
   render();
 
   // TODO: Stop adding shapes if we've reached the maximum number of shapes
+  // added if statement to addShape function to handle this
 }, 1000);
 
 render(); // We call this function once to render the initial state
